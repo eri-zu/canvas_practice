@@ -12,7 +12,16 @@
     <canvas id="canvas" width="640" height="480"></canvas>
     <script>
       var canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
       // ここにコードを書いていきます
+
+      const w = canvas.width;
+      const h = canvas.height;
+
+      ctx.beginPath();
+      ctx.arc(w / 2, h / 2, 50, 0, Math.PI * 2, true);
+      ctx.fillStyle = "#000";
+      ctx.fill();
     </script>
   </body>
 </html>
