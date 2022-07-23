@@ -1,10 +1,14 @@
 "use strict";
 
 import BallController from "./BallController.js";
+import Base from "./Base.js";
 
-export default class CanvasController {
+export default class CanvasController extends Base {
   constructor() {
+    super();
+
     this.setup();
+    this.setEvents();
   }
 
   setup() {
@@ -13,6 +17,8 @@ export default class CanvasController {
 
     new BallController(canvas, ctx);
   }
+
+  setEvents() {}
 }
 
 (() => {
