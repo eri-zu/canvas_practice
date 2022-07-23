@@ -10,9 +10,11 @@ export default class Ball extends Base {
     this.i = i;
     this.num = 5;
 
-    this.speed = {
-      x: 1 * Math.cos(m.radian((360 / this.num) * this.i)),
-      y: 1 * Math.sin(m.radian((360 / this.num) * this.i)),
+    this.speed = Math.random() * 10;
+
+    this.vector2 = {
+      x: Math.cos(m.radian((360 / this.num) * this.i)),
+      y: Math.sin(m.radian((360 / this.num) * this.i)),
     };
 
     this.isUEv = true;
@@ -29,8 +31,8 @@ export default class Ball extends Base {
   }
 
   update() {
-    this.posX += this.speed.x;
-    this.posY += this.speed.y;
+    this.posX += this.speed * this.vector2.x;
+    this.posY += this.speed * this.vector2.y;
 
     this.ctx.beginPath();
     this.ctx.arc(this.posX, this.posY, 10, 0, Math.PI * 2, true);
