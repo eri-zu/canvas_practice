@@ -1,6 +1,6 @@
 "use strict";
 
-import BallController from "./BallController.js";
+import Ball from "./Ball.js";
 import Base from "./Base.js";
 
 export default class CanvasController extends Base {
@@ -22,12 +22,18 @@ export default class CanvasController extends Base {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
 
+  fire(e) {
+    for (let i = 0; i < 5; i++) {
+      const ball = new Ball(this.canvas, this.ctx, i);
+      ball.getPos(e);
+    }
+  }
+
   setEvents() {
     super.setEvents();
 
     this.canvas.addEventListener("click", (e) => {
-      const ball = new BallController(this.canvas, this.ctx);
-      ball.getPos(e);
+      this.fire(e);
     });
   }
 }
