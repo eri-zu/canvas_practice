@@ -7,18 +7,29 @@ export default class CanvasController extends Base {
   constructor() {
     super();
 
+    this.isUEv = true;
+
     this.setup();
     this.setEvents();
   }
 
   setup() {
-    const canvas = document.getElementById("canvas");
-    const ctx = canvas.getContext("2d");
-
-    new BallController(canvas, ctx);
+    this.canvas = document.getElementById("canvas");
+    this.ctx = canvas.getContext("2d");
   }
 
-  setEvents() {}
+  update() {
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  }
+
+  setEvents() {
+    super.setEvents();
+
+    this.canvas.addEventListener("click", (e) => {
+      const ball = new BallController(this.canvas, this.ctx);
+      ball.getPos(e);
+    });
+  }
 }
 
 (() => {

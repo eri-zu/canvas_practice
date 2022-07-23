@@ -25,8 +25,6 @@ export default class BallController extends Base {
   }
 
   update() {
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
     this.posX += this.speed.x;
 
     this.ctx.beginPath();
@@ -37,9 +35,5 @@ export default class BallController extends Base {
 
   setEvents() {
     super.setEvents();
-
-    this.canvas.addEventListener("click", (e) => {
-      this.getPos(e);
-    });
   }
 }
