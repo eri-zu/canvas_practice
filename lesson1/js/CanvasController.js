@@ -22,7 +22,7 @@ export default class CanvasController extends Base {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
 
-  fire(e) {
+  createBall(e) {
     for (let i = 0; i < 5; i++) {
       const ball = new Ball(this.canvas, this.ctx, i);
       ball.getPos(e);
@@ -33,7 +33,7 @@ export default class CanvasController extends Base {
     super.setEvents();
 
     this.canvas.addEventListener("click", (e) => {
-      this.fire(e);
+      this.createBall(e);
     });
   }
 }

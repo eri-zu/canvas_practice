@@ -10,7 +10,11 @@ export default class Ball extends Base {
     this.i = i;
     this.num = 5;
 
-    this.speed = Math.random() * 10;
+    this.speed = Math.random() * 5;
+    this.life = 1;
+    this.lifespan = 2; // 2sで消える
+    this.frame = 0;
+    this.op = 1;
 
     this.vector2 = {
       x: Math.cos(m.radian((360 / this.num) * this.i)),
@@ -31,12 +35,19 @@ export default class Ball extends Base {
   }
 
   update() {
+    this.frame++;
+
+    if (this.frame % (60 * this.lifespan) == 0) {
+      this.life = 0;
+      this.op = this.life;
+    }
+
     this.posX += this.speed * this.vector2.x;
     this.posY += this.speed * this.vector2.y;
 
     this.ctx.beginPath();
     this.ctx.arc(this.posX, this.posY, 10, 0, Math.PI * 2, true);
-    this.ctx.fillStyle = "#000";
+    this.ctx.fillStyle = `rgba(0, 0, 0, ${this.op}`;
     this.ctx.fill();
   }
 
