@@ -28,6 +28,7 @@ export default class Ball extends Base {
     this.life = 1;
     this.lifespan = 6; // 6sで消える
     this.op = 1;
+    this.isDead = false;
 
     this.isUEv = true;
 
@@ -46,7 +47,7 @@ export default class Ball extends Base {
     this.frame++;
 
     // 寿命
-    if (this.dead()) this.life = this.op = 0;
+    this.checklife();
 
     // 端で跳ね返り
     this.turn();
@@ -60,8 +61,9 @@ export default class Ball extends Base {
     this.ctx.fill();
   }
 
-  dead() {
-    return this.frame % (60 * this.lifespan) == 0 ? true : false;
+  checklife() {
+    this.isDead = this.frame % (60 * this.lifespan) == 0 ? true : false;
+    if (this.isDead) this.life = this.op = 0;
   }
 
   turn() {

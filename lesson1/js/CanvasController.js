@@ -30,7 +30,7 @@ export default class CanvasController extends Base {
       this.balls[i].update();
 
       // canvas上から消す
-      if (this.balls[i].dead()) this.balls.splice(i, 1); // splice(start, count)
+      if (this.balls[i].isDead) this.balls.splice(i, 1); // splice(start, count)
     }
   }
 
