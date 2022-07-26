@@ -63,19 +63,19 @@ export default class Ball extends Base {
     this.posY = e.clientY;
 
     if (this.posX - this.r <= 0) {
-      this.posX += this.r + 1;
+      this.posX += this.r;
     }
 
     if (this.posX + this.r >= this.w) {
-      this.posX -= this.r + 1;
+      this.posX -= this.r;
     }
 
     if (this.posY - this.r <= 0) {
-      this.posY += this.r + 1;
+      this.posY += this.r;
     }
 
     if (this.posY + this.r >= this.h) {
-      this.posY -= this.r + 1;
+      this.posY -= this.r;
     }
   }
 
