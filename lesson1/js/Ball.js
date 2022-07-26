@@ -12,6 +12,8 @@ export default class Ball extends Base {
     this.w = this.canvas.width;
     this.h = this.canvas.height;
 
+    console.log(this.w, this.h, "this.w", "this.h");
+
     // ボール
     this.r = 10; // 半径
 
@@ -23,6 +25,13 @@ export default class Ball extends Base {
       x: Math.cos(m.radian((360 / this.num) * this.i)),
       y: Math.sin(m.radian((360 / this.num) * this.i)),
     };
+
+    console.log(
+      this.vector2.x,
+      this.vector2.y,
+      "this.vector2.x",
+      "this.vector2.y"
+    );
 
     // 減速
     this.a = 0.99;
@@ -50,8 +59,13 @@ export default class Ball extends Base {
   setup() {}
 
   getPos(e) {
-    this.posX = e.clientX;
-    this.posY = e.clientY;
+    if (e.clientX > this.r && e.clientX < this.w - this.r) {
+      this.posX = e.clientX;
+    }
+
+    if (e.clientY > this.r && e.clientY < this.h - this.r) {
+      this.posY = e.clientY;
+    }
   }
 
   update() {
