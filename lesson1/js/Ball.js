@@ -85,11 +85,11 @@ export default class Ball extends Base {
 
   turn() {
     if (this.posX - this.r <= 0 || this.posX + this.r >= this.w) {
-      this.speed *= -1;
+      this.vector2.x *= -1; // 入射角と反射角の関係
     }
 
     if (this.posY - this.r <= 0 || this.posY + this.r >= this.h) {
-      this.speed *= -1;
+      this.vector2.y *= -1;
     }
   }
 
