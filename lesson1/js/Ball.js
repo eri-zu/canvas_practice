@@ -26,13 +26,6 @@ export default class Ball extends Base {
       y: Math.sin(m.radian((360 / this.num) * this.i)),
     };
 
-    console.log(
-      this.vector2.x,
-      this.vector2.y,
-      "this.vector2.x",
-      "this.vector2.y"
-    );
-
     // 減速
     this.a = 0.99;
 
@@ -61,22 +54,6 @@ export default class Ball extends Base {
   getPos(e) {
     this.posX = e.clientX;
     this.posY = e.clientY;
-
-    if (this.posX - this.r <= 0) {
-      this.posX += this.r;
-    }
-
-    if (this.posX + this.r >= this.w) {
-      this.posX -= this.r;
-    }
-
-    if (this.posY - this.r <= 0) {
-      this.posY += this.r;
-    }
-
-    if (this.posY + this.r >= this.h) {
-      this.posY -= this.r;
-    }
   }
 
   update() {
@@ -109,11 +86,23 @@ export default class Ball extends Base {
   }
 
   turn() {
-    if (this.posX - this.r <= 0 || this.posX + this.r >= this.w) {
+    if (this.posX - this.r <= 0) {
+      this.posX = this.r;
       this.vector2.x *= -1; // 入射角と反射角の関係
     }
 
-    if (this.posY - this.r <= 0 || this.posY + this.r >= this.h) {
+    if (this.posX + this.r >= this.w) {
+      this.posX = this.w - this.r;
+      this.vector2.x *= -1; // 入射角と反射角の関係
+    }
+
+    if (this.posY - this.r <= 0) {
+      this.posY = this.r;
+      this.vector2.y *= -1;
+    }
+
+    if (this.posY + this.r >= this.h) {
+      this.posY = this.h - this.r;
       this.vector2.y *= -1;
     }
   }
