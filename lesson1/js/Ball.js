@@ -12,18 +12,17 @@ export default class Ball extends Base {
     this.w = this.canvas.width;
     this.h = this.canvas.height;
 
-    console.log(this.w, this.h, "this.w", "this.h");
-
     // ボール
     this.r = 10; // 半径
 
     // 5発ランダム
-    this.num = 5;
+    this.num = num;
     this.speed = Math.random() * 10; // 1 - 10 小数点
+    this.degbuffa = m.randomInt(-50, 50);
 
     this.vector2 = {
-      x: Math.cos(m.radian((360 / this.num) * this.i)),
-      y: Math.sin(m.radian((360 / this.num) * this.i)),
+      x: Math.cos(m.radian((360 / this.num) * this.i + this.degbuffa)),
+      y: Math.sin(m.radian((360 / this.num) * this.i + this.degbuffa)),
     };
 
     // 減速
