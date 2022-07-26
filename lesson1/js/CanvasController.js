@@ -36,7 +36,7 @@ export default class CanvasController extends Base {
 
   createBall(e) {
     for (let i = 0; i < this.num; i++) {
-      const ball = new Ball(this.canvas, this.ctx, this.num, i);
+      const ball = new Ball(this.canvas, this.ctx, this.num);
       this.balls.push(ball);
 
       ball.getPos(e);

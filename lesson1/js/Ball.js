@@ -2,13 +2,12 @@ import Base from "./Base.js";
 import * as m from "./Math.js";
 
 export default class Ball extends Base {
-  constructor(canvas, ctx, num, i) {
+  constructor(canvas, ctx, num) {
     super();
 
     this.canvas = canvas;
     this.ctx = ctx;
     this.num = num;
-    this.i = i;
     this.w = this.canvas.width;
     this.h = this.canvas.height;
 
@@ -16,13 +15,12 @@ export default class Ball extends Base {
     this.r = 10; // 半径
 
     // 5発ランダム
-    this.num = num;
     this.speed = Math.random() * 10; // 1 - 10 小数点
-    this.degbuffa = m.randomInt(-50, 50);
+    this.randomDeg = Math.random() * 360;
 
     this.vector2 = {
-      x: Math.cos(m.radian((360 / this.num) * this.i + this.degbuffa)),
-      y: Math.sin(m.radian((360 / this.num) * this.i + this.degbuffa)),
+      x: Math.cos(m.radian(this.randomDeg)),
+      y: Math.sin(m.radian(this.randomDeg)),
     };
 
     // 減速
