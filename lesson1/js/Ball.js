@@ -59,12 +59,23 @@ export default class Ball extends Base {
   setup() {}
 
   getPos(e) {
-    if (e.clientX > this.r && e.clientX < this.w - this.r) {
-      this.posX = e.clientX;
+    this.posX = e.clientX;
+    this.posY = e.clientY;
+
+    if (this.posX - this.r <= 0) {
+      this.posX += this.r + 1;
     }
 
-    if (e.clientY > this.r && e.clientY < this.h - this.r) {
-      this.posY = e.clientY;
+    if (this.posX + this.r >= this.w) {
+      this.posX -= this.r + 1;
+    }
+
+    if (this.posY - this.r <= 0) {
+      this.posY += this.r + 1;
+    }
+
+    if (this.posY + this.r >= this.h) {
+      this.posY -= this.r + 1;
     }
   }
 
