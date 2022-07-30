@@ -84,13 +84,13 @@ export default class Ball extends Base {
 
   turn() {
     if (this.posX - this.r <= 0) {
-      this.posX = this.r;
-      this.vector2.x *= -1; // 入射角と反射角の関係
+      this.posX = this.r; // 壁にピタッとくっつく位置に移動（壁にめり込まないようにする）
+      this.vector2.x *= -1; // スピードだと同方向に跳ね返るだけなので、入射角に対して反射角で返すように
     }
 
     if (this.posX + this.r >= this.w) {
       this.posX = this.w - this.r;
-      this.vector2.x *= -1; // 入射角と反射角の関係
+      this.vector2.x *= -1;
     }
 
     if (this.posY - this.r <= 0) {
