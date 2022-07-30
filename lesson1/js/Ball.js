@@ -12,7 +12,7 @@ export default class Ball extends Base {
     this.h = this.canvas.height;
 
     // ボール
-    this.r = 10; // 半径
+    this.r = 15; // 半径
 
     // 5発ランダム
     this.speed = Math.random() * 10; // 1 - 10 小数点
